@@ -28,7 +28,7 @@ class JupyterHttpConfiguration(core.HttpConfiguration):
         if sys.platform.startswith("win"):
             super().__init__(
                 http_uri, api_key,
-                cert_path = _SYSTEMLINK_SERVER_CERT_PATH
+                cert_path = self._SYSTEMLINK_SERVER_CERT_PATH
             )
         else:
             super().__init__(http_uri, api_key)
