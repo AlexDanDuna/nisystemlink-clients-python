@@ -88,10 +88,10 @@ exclude = ".*\\.pyi"
 version_toml  = ["pyproject.toml:tool.poetry.version"]
 build_command = "poetry build"
 
-[tool.python-semantic-release.branches.master]
+[tool.semantic-release.branches.master]
 match = "^master$"
 
-[tool.python-semantic-release.branches.maintenance]
+[tool.semantic-release.branches.maintenance]
 match = "^\\d+(?:\\.\\d+)*\\.x$"
 
 
