@@ -85,7 +85,7 @@ jobs:
           REPOSITORY_PASSWORD: ${{secrets.PYPI_PASSWORD}}
       - name: Semantic release2
         run: |
-          semantic-release -v DEBUG publish
+          semantic-release -vv publish
         env:
           # To generate a new token use the following guide, providing access to the "repo" scope.
           # https://docs.github.com/en/enterprise-server@3.4/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
