@@ -85,14 +85,11 @@ exclude = ".*\\.pyi"
 
 [tool.semantic_release]
 # Allow releasing from master and branches of the form "1.x", "1.2.x", etc..
+branch        = "^(master|\\d+(?:\\.\\d+)*\\.x)$"
 version_toml  = ["pyproject.toml:tool.poetry.version"]
 build_command = "poetry build"
 
-[tool.semantic_release.branches.master]
-match = "^master$"
 
-[tool.semantic_release.branches.maintenance]
-match = "^\\d+(?:\\.\\d+)*\\.x$"
 
 
 [build-system]
