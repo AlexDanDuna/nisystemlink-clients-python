@@ -75,17 +75,12 @@ jobs:
           pip install python-semantic-release==10.6.1 twine==6.1.0
           git config --global user.name "github-actions"
           git config --global user.email "action@github.com"
-        env:
-          # To generate a new token use the following guide, providing access to the "repo" scope.
-          # https://docs.github.com/en/enterprise-server@3.4/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
-          # Once you update the secret on the repo, ensure you update the master/main protected branch policy
-          # to allow your user permission to "bypass required pull requests".
-          GH_TOKEN: ${{secrets.GH_TOKEN}}
-          REPOSITORY_USERNAME: ${{secrets.REPOSITORY_USERNAME}}
-          REPOSITORY_PASSWORD: ${{secrets.PYPI_PASSWORD}}
+
       - name: Version
         run: |
           semantic-release -vv version
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Twine
         run: python -m twine upload dist/*
@@ -101,6 +96,4 @@ jobs:
           # https://docs.github.com/en/enterprise-server@3.4/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
           # Once you update the secret on the repo, ensure you update the master/main protected branch policy
           # to allow your user permission to "bypass required pull requests".
-          GH_TOKEN: ${{secrets.GH_TOKEN}}
-          REPOSITORY_USERNAME: ${{secrets.REPOSITORY_USERNAME}}
-          REPOSITORY_PASSWORD: ${{secrets.PYPI_PASSWORD}}          
+          GH_TOKEN: ${{secrets.GH_TOKEN}}   
