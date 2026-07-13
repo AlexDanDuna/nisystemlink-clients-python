@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nisystemlink-clients"
-version = "2.32.1"
+version = "2.33.0"
 description = "NI-SystemLink Python API"
 authors = ["National Instruments"]
 maintainers = [
@@ -92,6 +92,7 @@ match = "^master$"
 
 [tool.python-semantic-release.branches.maintenance]
 match = "^\\d+(?:\\.\\d+)*\\.x$"
+
 
 
 [build-system]
