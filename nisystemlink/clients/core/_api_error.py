@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
 
 """Implementation of ApiError."""
-# WHAAT
 from typing import List
 
 from ._uplink._json_model import JsonModel
 
 
 class ApiError(JsonModel):
-    """Represents the standard error structure for SystemLink API responses."""
+    """Represents the standard error object structure for SystemLink API responses."""
 
     name: str | None = None
     """String error code."""
