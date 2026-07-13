@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """Implementation of ApiError."""
-
+# WHAAT
 from typing import List
 
 from ._uplink._json_model import JsonModel
