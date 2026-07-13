@@ -72,7 +72,7 @@ jobs:
       - run: poetry install
       - name: Semantic release
         run: |
-          pip install python-semantic-release==10.6.1
+          pip install python-semantic-release==10.6.1 twine==6.1.0
           git config --global user.name "github-actions"
           git config --global user.email "action@github.com"
         env:
@@ -83,7 +83,17 @@ jobs:
           GH_TOKEN: ${{secrets.GH_TOKEN}}
           REPOSITORY_USERNAME: ${{secrets.REPOSITORY_USERNAME}}
           REPOSITORY_PASSWORD: ${{secrets.PYPI_PASSWORD}}
-      - name: Semantic release2
+      - name: Version
+        run: |
+          semantic-release -vv version
+
+      - name: Twine
+        run: python -m twine upload dist/*
+        env:
+          TWINE_USERNAME: ${{secrets.REPOSITORY_USERNAME}}
+          TWINE_PASSWORD: ${{secrets.PYPI_PASSWORD}}
+        
+      - name: Publish
         run: |
           semantic-release -vv publish
         env:
