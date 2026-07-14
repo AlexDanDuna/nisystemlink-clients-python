@@ -70,34 +70,32 @@ jobs:
           python-version: "3.10"
           cache: "poetry"
       - run: poetry install
-      - name: Semantic release
+      - name: Semantic Version - Release
         id: release
-        run: |
-          pip install python-semantic-release==10.6.1
-          git config --global user.name "github-actions"
-          git config --global user.email "action@github.com"
-          semantic-release version
-        env:
+        uses: python-semantic-release/python-semantic-release@v10.6.1
+        with:
           # To generate a new token use the following guide, providing access to the "repo" scope.
           # https://docs.github.com/en/enterprise-server@3.4/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
           # Once you update the secret on the repo, ensure you update the master/main protected branch policy
           # to allow your user permission to "bypass required pull requests".
-          GH_TOKEN: ${{secrets.GH_TOKEN}}
+          github_token: ${{ secrets.GH_TOKEN }}
+          git_committer_name: "github-actions"
+          git_committer_email: "action@github.com"
+      - name: Semantic Version - Publish package distributions to GitHub Releases
+        uses: python-semantic-release/publish-action@v10.6.1
+        if: steps.release.outputs.released == 'true'
+        with:
+          # To generate a new token use the following guide, providing access to the "repo" scope.
+          # https://docs.github.com/en/enterprise-server@3.4/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+          # Once you update the secret on the repo, ensure you update the master/main protected branch policy
+          # to allow your user permission to "bypass required pull requests".
+          github_token: ${{ secrets.GH_TOKEN }}
+          tag: ${{ steps.release.outputs.tag }}
       - name: Publish package distributions to PyPI using Twine
         if: steps.release.outputs.released == 'true'
         run: |
           pip install twine==6.1.0
           python -m twine upload dist/*
         env:
-          TWINE_USERNAME: ${{secrets.REPOSITORY_USERNAME}}
-          TWINE_PASSWORD: ${{secrets.PYPI_PASSWORD}}
-      - name: Publish package distributions to GitHub Releases
-        if: steps.release.outputs.released == 'true'
-        run: |
-          semantic-release publish
-        env:
-          # To generate a new token use the following guide, providing access to the "repo" scope.
-          # https://docs.github.com/en/enterprise-server@3.4/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
-          # Once you update the secret on the repo, ensure you update the master/main protected branch policy
-          # to allow your user permission to "bypass required pull requests".
-          GH_TOKEN: ${{secrets.GH_TOKEN}}
+          TWINE_USERNAME: ${{ secrets.REPOSITORY_USERNAME }}
+          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
