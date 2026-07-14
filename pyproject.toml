@@ -1,6 +1,6 @@
 [tool.poetry]
-name = "nisystemlink-clients"
-version = "2.32.1"
+name = "phantomr13testproject"
+version = "2.40.1"
 description = "NI-SystemLink Python API"
 authors = ["National Instruments"]
 maintainers = [
