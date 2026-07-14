@@ -7,7 +7,7 @@ from pydantic import Extra
 
 
 def pytest_addoption(parser):
-    """Register command line flags that tell us how to connect to the web servers.
+    """Register command line flags that tell us how to connect to the web serverss.
 
     Note that command line flags can also be added to the ``[pytest]`` section of
     ``tox.ini``, in an ``addopts`` setting.
