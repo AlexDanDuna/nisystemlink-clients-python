@@ -32,7 +32,7 @@ def pytest_collection_modifyitems(items):
 
 @pytest.fixture(scope="class")
 def cloud_config(pytestconfig):
-    """Fixture to get a CloudHttpConfiguration for testing.
+    """Fixture to get a CloudHttpConfiguration for testings.
 
     This requires the --cloud-api-key command line flag, or else skips the test.
     """
