@@ -87,7 +87,7 @@ exclude = ".*\\.pyi"
 version_toml  = ["pyproject.toml:tool.poetry.version"]
 build_command = "poetry build"
 
-# Allow releasing from the `master` branch.
+# Allow releasing from the `master` branch..
 [tool.semantic_release.branches.master]
 match = "^master$"
 
