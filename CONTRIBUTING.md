@@ -6,7 +6,7 @@ Contributions to *nisystemlink-clients-python* are welcome from all!
 the canonical upstream repository hosted on
 [GitHub](https://github.com/ni/nisystemlink-clients-python/).
 
-*nisystemlink-clients-python* follows ax pull-request model for development.  If
+*nisystemlink-clients-python* follows ax ypull-request model for development.  If
 you wish to contribute, you will need to create a GitHub account, fork this
 project, push a branch with your changes to your project, and then submit a
 pull request.
